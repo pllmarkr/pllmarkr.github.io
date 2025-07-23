@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Display</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            text-align: center;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            padding: 3rem;
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        h1 {
+            color: #4361ee;
+            margin-bottom: 2rem;
+        }
+        
+        .number-display {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 2rem 0;
+            min-height: 3rem;
+            color: #4361ee;
+        }
+        
+        button {
+            background-color: #4361ee;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        button:hover {
+            background-color: #3f37c9;
+            transform: translateY(-2px);
+        }
+        
+        .instructions {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Number Generator</h1>
+        
+        <div class="number-display" id="numberDisplay">
+            Press the button below
+        </div>
+        
+        <button id="randomBtn">Get Random Number</button>
+        
+        <div class="instructions">
+            Numbers are defined in the code. Edit the JavaScript to change them.
+        </div>
+    </div>
+
+    <script>
+        // Define your numbers here in this array
+
+const phoneNumbers = [
+            "0625769406",
+            "074246719",
+            "062058699",
+            "0936999107",
+            "0206498855",
+            "01722627073",
+            "01752762756",
+            "074314668",
+            "054271000",
+            "063496768",
+            "03023182500",
+            "075465995",
+            "01716742681",
+            "044528223",
+            "08583425",
+            "01738703613",
+            "01713888929",
+            "0571508371",
+            "062144577860",
+            "07275988407"
+        ];
+
+        
+        const numberDisplay = document.getElementById('numberDisplay');
+        const randomBtn = document.getElementById('randomBtn');
+        
+        function getRandomNumber() {
+            if (phoneNumbers.length === 0) {
+                numberDisplay.textContent = "No numbers available";
+                return;
+            }
+            
+            const randomIndex = Math.floor(Math.random() * phoneNumbers.length);
+            numberDisplay.textContent = phoneNumbers[randomIndex];
+        }
+        
+        randomBtn.addEventListener('click', getRandomNumber);
+        
+        // Display initial message
+        numberDisplay.textContent = `Loaded ${phoneNumbers.length} numbers`;
+        setTimeout(() => {
+            if (phoneNumbers.length > 0) {
+                numberDisplay.textContent = "Press the button below";
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
